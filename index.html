@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>asdasdaxzcsreasdaswasdxz</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 10px;
+      background-color: black; /* Latar belakang hitam */
+      color: #00ff00; /* Warna hijau ala terminal */
+      font-family: monospace; /* Font monospace ala terminal */
+      font-size: 1em;
+      white-space: pre-wrap; /* Agar teks bisa wrap ke baris baru */
+      overflow-y: hidden; /* Non-aktifkan scrollbar vertikal */
+      position: relative;
+    }
+
+    #console {
+      white-space: pre-wrap; /* Memastikan teks dapat dibungkus ke baris baru */
+      height: 100vh;
+      z-index: 1; /* Biarkan di bawah flash dan warning di awal */
+    }
+
+    .blinking-cursor {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #00ff00;
+      animation: blink 0.8s infinite; /* Efek kedipan */
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes flash {
+      0% { background-color: black; }
+      50% { background-color: white; }
+      100% { background-color: black; }
+    }
+
+    .flash-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: 10;
+      animation: flash 1s;
+    }
+
+    #warning {
+      position: absolute;
+      top: 20%; /* Posisi lebih ke atas */
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      color: red;
+      text-align: center;
+      animation: blink 1s infinite;
+      font-size: 8vw; /* Ukuran responsif berdasarkan lebar layar */
+    }
+
+    @media only screen and (max-width: 600px) {
+      #warning {
+        font-size: 8vw; /* Ukuran lebih besar untuk layar HP kecil */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="flash" class="flash-screen"></div>
+  <div id="warning">Peringatan!! Perangkatmu sudah tidak aman!!</div>
+  <div id="console"></div>
+  <span class="blinking-cursor">|</span>
+
+  <script>
+    const messages = [
+      "Your account has been hacked!",
+      "Hack in progress...",
+      "Encrypting your data...",
+      "Attempting to access bank details...",
+      "Downloading personal information...",
+      "Sending all your passwords to the dark web...",
+      "Oops, your files have been encrypted!",
+      "Oops! You’ve been hacked!",
+      "Pay $1000 in Bitcoin to recover your data.",
+      "All data compromised...",
+      "Warning: Unauthorized access detected!",
+      "Cracking your passwords...",
+      "Stealing your credentials...",
+      "Uploading your browser history...",
+      "Accessing webcam feed...",
+      "Bypassing firewall...",
+      "Your device is now under our control...",
+      "Full system breach...",
+      "You’ve lost access to your files!",
+      "Your social media accounts have been hacked!",
+      "Installing ransomware...",
+      "Decrypting your bank details...",
+      "Please wait... deleting your files...",
+      "Scanning for sensitive information...",
+      "Hack complete, all data compromised.",
+      "Your contacts list is being uploaded...",
+      "Oops, something went wrong! Just kidding, you’ve been hacked.",
+      "Disabling your antivirus...",
+      "Hijacking your network connection...",
+      "Uploading all your documents...",
+      "You are being watched...",
+      "Injecting malware...",
+      "Sending emails to your boss...",
+      "Preparing to factory reset your phone...",
+      "All your files are now public!",
+      "Your cloud storage has been emptied!",
+      "Accessing all personal files...",
+      "Checking your bank balance...",
+      "Oops! Did you just lose your data?",
+      "Your webcam is now streaming live...",
+      "Oops, your account has been compromised.",
+      "Encrypting your files...",
+      "All personal data sent to unknown server...",
+      "Oops! Your internet history has been exposed...",
+      "Taking over your social media...",
+      "Cracking 2FA authentication...",
+      "Sending your private messages...",
+      "Transferring all your data...",
+      "Access denied... Trying again...",
+      "Reformatting your device in 3... 2... 1...",
+      "Whoops! Just deleted your favorite photos.",
+      "All your friends are being notified of your hack...",
+      "Hack successful... Say goodbye to your data!"
+    ];
+
+    // Fungsi untuk mulai simulasi langsung setelah peringatan
+    function startHacking() {
+      const consoleElement = document.getElementById("console");
+      setInterval(() => {
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        consoleElement.textContent += randomMessage + '\n'; // Tambah pesan baru ke terminal
+        window.scrollTo(0, document.body.scrollHeight); // Auto-scroll ke bawah
+      }, 150); // Baris baru muncul setiap 150ms tanpa delay
+    }
+
+    // Fungsi untuk menampilkan warning dengan flash
+    function showWarning() {
+      const flashElement = document.getElementById("flash");
+      const warningElement = document.getElementById("warning");
+
+      // Hapus flash dan warning setelah 3 detik, lalu mulai simulasi hacking
+      setTimeout(() => {
+        flashElement.remove(); // Hapus efek flash setelah 3 detik
+        warningElement.remove(); // Hapus teks peringatan
+        startHacking(); // Langsung mulai simulasi
+      }, 1000); // Durasi 3 detik untuk teks peringatan
+    }
+
+    // Langsung tampilkan warning dan simulasi hacking saat halaman dibuka
+    showWarning();
+  </script>
+
+</body>
+</html>
